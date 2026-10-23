@@ -15,16 +15,19 @@ public class PasswordResetMailer {
     // https://en.wikipedia.org/wiki/.local
     // https://en.wikipedia.org/wiki/Top-level_domain#Reserved_domains
     private static final Set<String> IGNORED_DOMAINS = Set.of(
-            "example.com",
-            "example.net",
-            "example.org",
-            "example.edu",
-            "local",
-            "example",
-            "invalid",
-            "localhost",
-            "test"
-        );
+        "@example.com",
+        "@example.net",
+        "@example.org",
+        "@example.edu",
+        "@example",
+        "@invalid",
+        "@localhost",
+        "@test",
+        "@local",
+        "@onion",
+        "@internal",
+        "@alt"
+    );
 
     private final EmailService emailService;
 
@@ -58,10 +61,15 @@ public class PasswordResetMailer {
         final String subject = substitute(PasswordResetPlugin.SUBJECT.getValue(), user, uri);
         final String body = substitute(PasswordResetPlugin.BODY.getValue(), user, uri);
 
-        emailService.sendMessage(user.getName(), email,
+        emailService.sendMessage(
+            user.getName(),
+            email,
             PasswordResetPlugin.SENDER_NAME.getValue(),
             PasswordResetPlugin.SENDER_ADDRESS.getValue(),
-            subject, body, null);
+            subject,
+            body,
+            null
+        );
     }
 
     private String substitute(

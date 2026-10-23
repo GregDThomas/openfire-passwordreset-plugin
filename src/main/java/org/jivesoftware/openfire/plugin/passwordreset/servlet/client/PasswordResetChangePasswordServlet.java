@@ -102,9 +102,8 @@ public class PasswordResetChangePasswordServlet extends HttpServlet {
                 }
                 user.setPassword(form.newPassword);
                 resetTokenManager.deleteTokens(user);
-                request.getSession().setAttribute(
-                    FlashMessageTag.SUCCESS_MESSAGE_KEY,
-                    localize("passwordreset.change-password.password-changed"));
+                response.sendRedirect("password-reset-password-changed.jsp");
+                return;
             } catch (final SQLException e) {
                 log.error("Unable to retrieve user from token", e);
                 request.getSession().setAttribute(

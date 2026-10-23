@@ -87,7 +87,7 @@ public class PasswordResetSendEmailServlet extends HttpServlet {
 
         final Optional<User> optionalUser = getUserFromIdentifier(form.user);
 
-        // Dont warn the user if they've not specified the correct value - we don't want people
+        // Don't warn the user if they've not specified the correct value - we don't want people
         // using this page to guess valid identifiers
         try {
             if (optionalUser.isPresent()) {

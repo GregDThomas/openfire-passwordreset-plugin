@@ -126,6 +126,7 @@ public class PasswordResetSettingsServlet extends HttpServlet {
         if (dto.valid) {
             PasswordResetPlugin.ENABLED.setValue(dto.enabled);
             PasswordResetPlugin.SERVER.setValue(dto.server);
+            PasswordResetPlugin.SENDER_NAME.setValue(dto.senderName);
             PasswordResetPlugin.SENDER_ADDRESS.setValue(dto.senderAddress);
             PasswordResetPlugin.SUBJECT.setValue(dto.subject);
             PasswordResetPlugin.BODY.setValue(dto.body);

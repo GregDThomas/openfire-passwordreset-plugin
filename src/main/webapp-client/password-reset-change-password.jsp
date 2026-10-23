@@ -29,7 +29,8 @@
 <form method="post">
     <!--
     This looks a bit hinky, but allows Firefox to identify the username whose
-    password is being saved. Normally an input field with type="hidden" would be used.
+    password is being saved, so it will correctly update any saved password in the
+    password manager. Normally an input field with type="hidden" would be used.
     -->
     <%--suppress HtmlFormInputWithoutLabel --%>
     <input type="text" name="userId" autocomplete="username" style="display:none"

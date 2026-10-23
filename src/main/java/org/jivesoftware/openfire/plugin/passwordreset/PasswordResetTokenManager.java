@@ -23,12 +23,12 @@ import org.jivesoftware.util.StringUtils;
 @SuppressFBWarnings({"EI_EXPOSE_REP2"})
 public class PasswordResetTokenManager {
 
-    private static final int TOKEN_LENGTH = 32;
+    private static final int TOKEN_LENGTH = 32; // Increasing this would mean a schema change
     private static final String INSERT_SQL =
         "INSERT INTO ofPasswordResetToken (token, userId, sourceAddress, expires)"
             + " VALUES (?,?,?,?)";
     private static final String PURGE_EXPIRED_SQL =
-        "DELETE FROM ofPasswordResetToken WHERE expires < NOW()";
+        "DELETE FROM ofPasswordResetToken WHERE expires < CURRENT_TIMESTAMP";
     private static final String FIND_USER_SQL =
         "SELECT userId FROM ofPasswordResetToken WHERE token = ?";
     private static final String DELETE_TOKENS_FOR_USER =
